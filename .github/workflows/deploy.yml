@@ -14,10 +14,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Validate HTML Syntax
-        uses: html-validate/html-validate-action@v1 # Correct action path
-        with:
-          files: './*.html'
+      - name: Validate HTML and Check Links
+        uses: re-actors/htmlproofer-action@v1
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
