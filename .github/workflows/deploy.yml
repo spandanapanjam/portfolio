@@ -12,21 +12,27 @@ jobs:
       contents: write
 
     steps:
+      # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # --- START OF THE NEW, WORKING VALIDATION STEPS ---
-      - name: Setup Node.js Environment
+      # Step 2: Setup Node.js environment
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
+      # Step 3: Validate HTML syntax
       - name: Validate HTML Syntax
         run: |
           npm install -g html-validate
           html-validate index.html
-      # --- END OF THE NEW, WORKING VALIDATION STEPS ---
 
+      # Step 4: Validate HTML links (optional)
+      - name: Validate HTML and Check Links
+        uses: re-actors/htmlproofer-action@v1
+
+      # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
