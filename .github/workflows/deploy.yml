@@ -14,10 +14,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Check HTML structure (Lint)
-        uses: avto-dev/markdown-lint@v1 # This action can also check HTML
+      - name: Validate HTML Structure
+        uses: chialab/html-checker@v1
         with:
-          args: './*.html' # Check all HTML files in the main folder
+          path: './*.html' # This correctly targets your HTML files
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
