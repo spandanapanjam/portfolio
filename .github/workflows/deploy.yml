@@ -15,10 +15,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Validate HTML Syntax
-        uses: validator/html-validator-action@v1
+        uses: html-validate/html-validate-action@v1 # Correct action path
         with:
-          files: './*.html' # This correctly targets your HTML files
-
+          files: './*.html'
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
